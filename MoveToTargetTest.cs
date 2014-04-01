@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
-
 using System.Collections;
-
-
 
 public class MoveToTargetTest : MonoBehaviour {
 	
@@ -23,22 +20,39 @@ public class MoveToTargetTest : MonoBehaviour {
 			ChangePosition ();
 		}
 		else
-		{
+		{	
 			Destroy(gameObject);
 		}
-
+		//TEST
+		Assert (wayPointIndex_ <= wayPointArray.Length);
+		Assert (rigidbody.velocity.x == speed || rigidbody.velocity.y == speed);
 	}
 	void ChangePosition()
 	{
-		if(wayPoint)
-
-			transform.position = Vector3.MoveTowards(transform.position, wayPoint.transform.position, speed * Time.deltaTime);
+		if (wayPoint) 
+		{
+			transform.position = Vector3.MoveTowards (transform.position, wayPoint.transform.position, speed * Time.deltaTime);
+		}
 	}
-	void OnTriggerEnter ()
+	void OnTriggerEnter (Collider collider)
+	{	
+		if (collider.gameObject.tag == "Turn") {
+			Debug.Log("EnterTurn");
+			wayPointIndex_++;  
+			wayPoint = wayPointArray [wayPointIndex_];
+			}
+		if (collider.gameObject.tag == "Bullet") {
+			Debug.Log("Entered!Bullet");
+			Destroy(gameObject);	
+		}
+
+	}
+	void Assert(bool condition)
 	{
-		wayPointIndex_++;  
-		wayPoint = wayPointArray [wayPointIndex_];
-
+		if(!condition)
+		{
+			Debug.LogError("Error");
+		}
+		
 	}
-	
 }

@@ -3,10 +3,11 @@ using System.Collections;
 
 public class MoveToTargetTest : MonoBehaviour {
 	
-	public float speed = 4f;
+	public float speed = 15f;
 	public Transform wayPoint;
 	public Transform[] wayPointArray;
 	private int wayPointIndex_=0;
+	private int health_ = 100;
 	// Use this for initialization
 	void Start () 
 	{
@@ -24,8 +25,8 @@ public class MoveToTargetTest : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		//TEST
-		Assert (wayPointIndex_ <= wayPointArray.Length);
-		Assert (rigidbody.velocity.x == speed || rigidbody.velocity.y == speed);
+		//Assert (wayPointIndex_ <= wayPointArray.Length);
+		//Assert (rigidbody.velocity.x == speed || rigidbody.velocity.y == speed);
 	}
 	void ChangePosition()
 	{
@@ -43,7 +44,13 @@ public class MoveToTargetTest : MonoBehaviour {
 			}
 		if (collider.gameObject.tag == "Bullet") {
 			Debug.Log("Entered!Bullet");
-			Destroy(gameObject);	
+			//for testing we will set bullet dmg at 50 so two shots should do it	
+			if (health_ > 50 ){
+				health_ = health_ - 50;	
+			}
+			else{
+				Destroy(gameObject);
+			}
 		}
 
 	}

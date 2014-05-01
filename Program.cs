@@ -8,6 +8,9 @@ using UnityEngine;
 
 
 
+
+
+
 namespace TowerDefenseGame
 {
     [TestFixture]
@@ -17,6 +20,7 @@ namespace TowerDefenseGame
         //{
         //}
 
+
         [Test]
         public void AutoaimInitialize()
         {
@@ -24,7 +28,7 @@ namespace TowerDefenseGame
             //Vector3 position1 = new Vector3(0, 0, 0);
             //testAuto.target_.position = position1;
             Assert.IsTrue(testAuto.initialized_);
-        
+
         }
         [Test]
         public void AutoaimPositions()
@@ -47,6 +51,7 @@ namespace TowerDefenseGame
             returnVelocity = testAuto.CalculateTargetVelocity();
             Assert.True(returnVelocity == trueVelocity);
 
+
         }
         [Test]
         public void CalculateBulletVelocity()
@@ -58,6 +63,7 @@ namespace TowerDefenseGame
             testAuto.CalculateBulletVelocity();
             Assert.True(testAuto.bulletVelocity_ == answerVelocity);
         }
+
 
         [Test]
         public void CalculateDistance()
@@ -73,16 +79,68 @@ namespace TowerDefenseGame
             distance = testAuto.CalculateDistance();
             Assert.True(distance == answerDistanceman);
 
+
+        }
+
+        [Test]
+        public void CalculateTargetSpeed()
+        {
+            Autoaim testAuto = new Autoaim();
+            Vector3 targetPosition = new Vector3(0f, 0f, 0f);
+            Vector3 turretPosition = new Vector3(2f, 2f, 0f);
+            testAuto.SetPositions(targetPosition, targetPosition);
+            testAuto.SetTurretPosition(turretPosition);
+            float test = (float)Math.Sqrt(Math.Pow(2, 2) + Math.Pow(2, 2));
+            Assert.True(testAuto.CalculateTargetSpeed() == test);
+        }
+
+        [Test]
+        public void CalculatePositionToShoot()
+        {
+            Autoaim testAuto = new Autoaim();
+            Vector3 targetPosition1 = new Vector3(0f, 0f, 0f);
+            Vector3 targetPosition2 = new Vector3(2f, 2f, 0f);
+            Vector3 turretPosition = new Vector3(3f, 3f, 0f);
+            testAuto.SetPositions(targetPosition1, targetPosition2);
+            testAuto.SetTurretPosition(turretPosition);
+            testAuto.SetBulletForce(1000.0f);
+
+        }
+
+        [Test]
+        public void FirstWave()
+        {
+            MainGame testMain = new MainGame();
+            Assert.True(testMain.balloonsInWave_ == 5 && testMain.timeBetweenBalloons_ == 1.0f);
+        
+        }
+
+        [Test]
+        public void Wave5()
+        {
+            MainGame testMain = new MainGame();
+            for (int i = 0; i < 5; i++)
+            {
+                testMain.makeNextWave();
+            }
+            Assert.True(testMain.balloonsInWave_ == 20 && testMain.timeBetweenBalloons_ == .9f);
+        }
+
+        [Test]
+        public void instancesOfMainGame()
+        {
+            MainGame testMain = new MainGame();
+            MainGame copy = new MainGame();
+            Assert.IsNotNull(copy);
+
         }
     }
     class Program
     {
         static int Main()
 
+
         { return 0; }
-    
+
     }
 }
-
-
- 

@@ -8,6 +8,9 @@ public class MoveToTargetTest : MonoBehaviour {
 	public Transform[] wayPointArray;
 	private int wayPointIndex_=0;
 	private int health_ = 100;
+	//for the bullet class and calling up damage
+	Bullet myBullet = new Bullet();
+	//private int damage = bulletDamage.damage;
 	// Use this for initialization
 	void Start () 
 	{
@@ -37,6 +40,8 @@ public class MoveToTargetTest : MonoBehaviour {
 	}
 	void OnTriggerEnter (Collider collider)
 	{	
+		myBullet.Damage = 50;
+		int damage = myBullet.Damage;
 		if (collider.gameObject.tag == "Turn") {
 			Debug.Log("EnterTurn");
 			wayPointIndex_++;  
@@ -46,7 +51,7 @@ public class MoveToTargetTest : MonoBehaviour {
 			Debug.Log("Entered!Bullet");
 			//for testing we will set bullet dmg at 50 so two shots should do it	
 			if (health_ > 50 ){
-				health_ = health_ - 50;	
+				health_ = health_ - damage;	
 			}
 			else{
 				Destroy(gameObject);

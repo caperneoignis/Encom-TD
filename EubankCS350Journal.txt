@@ -1,0 +1,93 @@
+Jonathan Eubank CS350 Project Journal
+
+2/5
+--group met with Dr. Ribler, selected Tower Defense as project
+--created initial stories for pivotal tracker
+
+2/6
+--group discussed which programming language to use
+--eventually chose C#
+--added some stories to points
+--began researching game engine platforms, picked Unity
+--began exploring Unity and learning features
+
+2/7
+--had group meeting
+--decided on monkey/balloon theme for game
+--began discussing game features, such as unit upgrades, level design, and difficulty
+
+2/13
+--watched a lot of Unity tutorials online, learned about graphics/textures, unity keywords, sprites
+
+2/14
+--began working on initial unit pathfinding for balloons to navigate level
+
+2/19
+--researched unit-testing software for Unity/C#
+
+2/20
+--began initial sprite development
+--began small unit-testing (if statements w/ prints)
+--had teleconference with Vietnamese group
+
+2/25
+--began working on collision detection for balloons (hit waypoint and begin to move to next)
+
+2/27
+--group project development in class
+
+3/3
+--began working on unit-tracking for turret
+
+3/9
+--continued work on balloon navigation and unit-tracking for turret
+
+3/17
+--attempted to begin unit-testing with Unity Test Tools, but experienced great difficulty implementing it into the software, program would not run
+
+3/27
+--switched back to manual testing using if statements and prints
+--improved turret accuracy and gave turrets a range
+
+
+3/28
+--made balloons die on turret hit (turrets can multikill balloons)
+--worked some more on balloon targeting (trying to kill first in line rather than closest)
+
+4/1
+--worked on our unit-testing issues some more, tried to use Visual Studio to unit test but failed due to unique nature of Unity keywords (Unity-specific classes)
+
+4/4
+--began working on initial geometric functions for balloon targeting
+
+4/9
+--met with Dr. Ribler, got advice on possible way to unit-test
+--began unit-testing on functions we could call (such as geometric targeting functions)
+
+4/12
+--worked on targeting functions some more
+--began group discussion on creating a GUI for menu to place monkeys on board
+
+4/17
+--finished balloon sprites, incorporated into game
+--implemented balloon spawner to spawn a single wave 
+--got wave of balloons to follow path
+
+4/21
+--began implementation of new geometric targeting system for turrets after completion of unit-testing
+--finished unit-testing and design for monkey targeting system
+4/25
+--began planning phase of making game instance into a singleton
+--encountered difficulty trying to implement singleton
+--removed monkey multikill ability by destroying bullet after kill
+
+4/30
+--finished implementing new targeting system for monkey
+--created multiple waves of balloons that spawn after 10 second interval
+--created life counter that tracks if balloon reaches end of path
+--created score counter that tracks balloon kills
+--began working on menu GUI to spawn monkeys on click (to place them on the board)
+--began working on drag/drop implementation for monkeys
+
+
+Note: all tasks listed were done using pair programming with Kevin Midkiff, except for the Unity tutorials on 2/13
